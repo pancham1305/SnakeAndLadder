@@ -3,13 +3,13 @@ import java.util.Random;
 public class Player {
     private int pos = 0;
 
-    public static int Dice() {
+    public static int RollDice() {
         Random r = new Random();
         int mv = r.nextInt(5) + 1;
         return mv;
     }
 
-    public void move(int x) {
+    private void move(int x) {
         if (x + pos < 0) {
             pos = 0;
             return;
@@ -21,12 +21,12 @@ public class Player {
         pos += x;
     }
 
-    public void check(int pos) {
+    public void check(int mv) {
         Random r = new Random();
         int option = r.nextInt(3);
         switch (option) {
-            case 1 -> move(pos);// no snake found
-            case 2 -> move(-pos);// snake found
+            case 1 -> move(mv);// no snake found
+            case 2 -> move(-mv);// snake found
         }
         return;
     }
