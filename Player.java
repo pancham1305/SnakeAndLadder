@@ -15,7 +15,6 @@ public class Player {
             return;
         }
         if (x + pos >= 100) {
-            pos = 100;
             return;
         }
         pos += x;
@@ -31,7 +30,7 @@ public class Player {
         return;
     }
 
-    public int getPos() {
-        return pos;
+    public Boolean isAtFinish() {
+        return (pos == 100);
     }
 }

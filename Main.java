@@ -12,17 +12,22 @@ public class Main {
     }
 
     public static int Game(Player p1, Player p2) {
-        while (true) {
+        int winner = -1;
+        Boolean end = false;
+        while (!p1.isAtFinish() && !p2.isAtFinish()) {
             int mv = Player.RollDice();
             p1.check(mv);
-            if (p1.getPos() == 100) {
-                return 1;
+            if (p1.isAtFinish() && !end) {
+                winner = 1;
+                end = true;
             }
             mv = Player.RollDice();
             p2.check(mv);
-            if (p2.getPos() == 100) {
-                return 2;
+            if (p2.isAtFinish() && !end) {
+                winner = 2;
+                end = true;
             }
         }
+        return winner;
     }
 }
